@@ -2,12 +2,16 @@
 #include "../../src/compound_shape.h"
 #include "../../src/shape.h"
 #include "../../src/rectangle.h"
+#include "../../src/circle.h"
 
 #include <iostream>
 
 class BFSCompoundIteratorTest : public ::testing::Test
 {
 protected:
+    BFSCompoundIteratorTest(){}
+    ~BFSCompoundIteratorTest(){}
+
     Point *p1, *p2, *p3, *p4;
     TwoDimensionalVector *vec1, *vec2, *vec3;
     CompoundShape *cs1, *cs2;
@@ -23,6 +27,7 @@ protected:
         vec1 = new TwoDimensionalVector(p1, p2);
         vec2 = new TwoDimensionalVector(p1, p3);
         vec3 = new TwoDimensionalVector(p1, p4);
+
 
         cs1 = new CompoundShape();
         cs1->addShape(new Circle(vec1));
@@ -49,9 +54,19 @@ protected:
     }
 };
 
+TEST_F(BFSCompoundIteratorTest, testIsDone)
+{
+    ASSERT_NO_THROW(it->isDone());
+}
+
+TEST_F(BFSCompoundIteratorTest, testCurrentItem)
+{
+    ASSERT_NO_THROW(it->currentItem());
+}
+
 TEST_F(BFSCompoundIteratorTest, CurrentItemShouldBeCorrect)
 {
-    ASSERT_EQ(3 * 3 * M_PI, it->currentItem()->area());
+    ASSERT_EQ(3 * 3 * M_PI, it->currentItem()->area()); 
 }
 
 TEST_F(BFSCompoundIteratorTest, NextShouldBeCorrect)
@@ -59,6 +74,8 @@ TEST_F(BFSCompoundIteratorTest, NextShouldBeCorrect)
     it->next();
     ASSERT_EQ(5 * 5 * M_PI + 25, it->currentItem()->area());
 }
+
+
 
 TEST_F(BFSCompoundIteratorTest, IsDoneShouldBeCorrect)
 {

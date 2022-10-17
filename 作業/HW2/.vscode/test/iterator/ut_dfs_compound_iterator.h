@@ -2,8 +2,6 @@
 #include "../../src/compound_shape.h"
 #include "../../src/shape.h"
 #include "../../src/rectangle.h"
-#include "../../src/circle.h"
-
 
 #include <iostream>
 
@@ -50,16 +48,6 @@ protected:
         delete it;
     }
 };
-
-TEST_F(DFSCompoundIteratorTest, testIsDone)
-{
-    ASSERT_NO_THROW(it->isDone());
-}
-
-TEST_F(DFSCompoundIteratorTest, testCurrentItem)
-{
-    ASSERT_NO_THROW(it->currentItem());
-}
 
 TEST_F(DFSCompoundIteratorTest, CurrentItemShouldBeCorrect)
 {
