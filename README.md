@@ -4,3 +4,5 @@
 HW1: OOP練習
 
 HW2: Composite Pattern & Iterator Pattern
+
+HW3: Visitor Pattern & Factory Method
